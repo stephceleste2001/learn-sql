@@ -50,4 +50,56 @@ SELECT product_d, product_name
 FROM Products
 WHERE unit_price > 100;
 
--- 8. Calculate the total revenue generated from all sales in the 
+-- 8. Calculate the total revenue generated from all sales in the Sales table.
+SELECT SUM(total_price) AS total_revenue
+FROM SALES;
+
+-- 9. Calculate the average unit_price of products table.
+SELECT AVG(unit_price) AS average_unit_price
+FROM Products;
+
+-- 10. Calculate the total quantity_sold from the Sales table. 
+SELECT SUM(quantity_sold) AS total_quantity_sold
+FROM Sales;
+
+-- 11. Count Sales Per Day from the Sales table
+SELECT sale_date, COUNT(*) AS sales_count
+FROM Sales
+GROUP BY sale_date
+ORDER BY sale_date;
+
+-- 12. Retrieve product_name and unit_price from the Products table with the Highest Unit Price
+SELECT product_name, unit_price
+FROM Products
+ORDER BY unit_price DESC
+LIMIT 1;
+
+-- 13. Retrieve the sale_id, product_id, and total_price from the Sales table for sales with a quantity_sold greater than 4.
+SELECT sale_id, product_id, total_price
+FROM Sales
+WHERE quantity_sold > 4;
+
+-- 14. Retrieve the product_name and unit_price from the Products table, ordering the results by unit_price in descending order.
+SELECT product_name, unit_price
+FROM Products
+ORDER BY unit_price DESC;
+
+-- 15. Retrieve the total_price of all sales, rounding the values to two decimal places.
+SELECT ROUND(SUM(total_price), 2) AS total_sales
+FROM Sales;
+
+-- 16. Calculate the average total_price of sales the sales in the Sales table.
+SELECT AVG(total_price) AS average_unit_price
+FROM Sales;
+
+-- 17. Retrieve the sale_id and sale_date from the Sales table, formatting the sale_date as 'YYYY-MM-DD'
+SELECT sale_id, DATE_FORMAT(sale_date, '%Y-%m-%d') AS formatted_date
+FROM Sales;
+
+-- 18. Calculate the total revenue generated from sales of products in the 'Electronics' category
+SELECT SUM(Sales.total_price) AS total_revenue
+FROM Sales
+JOIN Products ON Sales.product_id = Products.product_id
+WHERE Products.category = 'Electronics';
+
+-- 19. Retrieve the product_name and unit_price from the Products table, filtering the unit_price to show only values between $20 and $600
