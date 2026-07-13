@@ -1,3 +1,49 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:2263351c26873726c9ab5627456fed75d650b468222891766f9392c9f85e2fb8
-size 835
+--SQL Statements--
+-- 1. Oracle isn't case sensitive
+select * from employees;
+SELECT * FROM employees;
+Select * From Employees;
+sElEcT * fROM EmpLOyEes;
+
+-- 2. writing query into multiple lines
+select * from
+employees;
+
+select *
+from
+employees;
+
+select
+*
+from
+employees;
+
+-- 3. keywords can't be abbreviated or split
+sel * from employees;
+
+sel
+ect * from employees;
+
+select * from empl
+oyees;
+
+--4. can be terminated by a semicolon ";" or a forward slash "/" sign
+select * from employees
+select * from departments
+
+select * from employees;
+select * from departments;
+
+select * from employees
+;
+
+select * from departments;
+
+select * from employees
+/
+
+select * from departments;
+
+-- 5. need to be at least one space between the commands
+------ wrong
+select    *      fromemployees;
