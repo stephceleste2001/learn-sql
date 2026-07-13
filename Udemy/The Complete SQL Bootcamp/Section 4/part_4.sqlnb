@@ -1,0 +1,24 @@
+cells:
+  - kind: 1
+    value: "# Using the BETWEEN ... AND Operator\r
+
+      - retrieves data between the specified lower limit and upper limit\r
+
+      - the lower & upper limit values are included\r
+
+      - many data types like number, date, character values can be restricted
+      with BETWEEN...AND operator"
+    languageId: markdown
+  - kind: 2
+    value: "-- query that shows employees that have a salary between 10,000 anc
+      14,000\r
+
+      SELECT * FROM employees WHERE salary BETWEEN 10000 AND 14000;"
+    languageId: oracle-sql
+  - kind: 2
+    value: "-- query that shows employees that hired between June 7, 2002 and
+      January 29, 2008\r
+
+      SELECT * FROM employees WHERE hire_date BETWEEN '07-JUN-02' AND
+      '29-JAN-08';"
+    languageId: oracle-sql

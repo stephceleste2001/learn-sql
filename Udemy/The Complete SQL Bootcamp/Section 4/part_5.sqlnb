@@ -1,0 +1,36 @@
+cells:
+  - kind: 1
+    value: "# Using the IN Operator\r
+
+      - is used to retrieve the restricted values in a specified list\r
+
+      - many data types like number, date, character values can be used with the
+      IN operator\r
+
+      - order of the specified values is not important"
+    languageId: markdown
+  - kind: 2
+    value: "-- query that show which employee returns based on employee_id = 50,
+      100, 65, 210\r
+
+      SELECT * FROM EMPLOYEES\r
+
+      \    WHERE employee_id IN (50, 100, 65, 210);"
+    languageId: oracle-sql
+  - kind: 2
+    value: "-- query that show what employees have the first name: Steven, Peter,
+      and Adam\r
+
+      SELECT * FROM EMPLOYEES\r
+
+      \    WHERE first_name IN ('Steven', 'Peter', 'Adam');"
+    languageId: oracle-sql
+  - kind: 2
+    value: "-- query that returns employees who were hired on March 8, 2008 and on\r
+
+      -- January 30, 2005\r
+
+      SELECT * FROM EMPLOYEES\r
+
+      \    WHERE hire_date IN ('08-MAR-08', '30-JAN-05');"
+    languageId: oracle-sql
