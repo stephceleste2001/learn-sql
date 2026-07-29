@@ -1,0 +1,36 @@
+cells:
+  - kind: 1
+    value: "# Date Values & Formats in Oracle\r
+
+      - **DATE** is the main datatype used in Oracle for storing date values\r
+
+      - oracle databases stores the date values in internal numeric format\r
+
+      - it stores a seven-byte number that contains the century, year, month,
+      day, and hour, minute, and second\r
+
+      - there are many different date representations in Oracle like
+      ('DD-MON-RR', 'DD-MM-YY', 'DD/MM/YYYY', etc)\r
+
+      \r
+
+      | CENTURY | YEAR | MONTH | DAY | HOUR | MINUTE | SECOND |\r
+
+      | ------- | ---- | ----- | --- | ---- | ------ | ------ |\r
+
+      | 19      | 03   | 06    | 17  | 17   | 10     | 43     |\r
+
+      \r
+
+      \  - DD=day\r
+
+      \  - MON=month\r
+
+      \  - RR=allows use to show 20th-century dates in the 21st century using
+      only **two** digits; converts two digit years into four digit years by
+      rounding\r
+
+      \  - YYYY=full digit year\r
+
+      \  - YY=last two digits of the year"
+    languageId: markdown

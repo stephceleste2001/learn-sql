@@ -1,0 +1,24 @@
+cells:
+  - kind: 1
+    value: "# IS NULL Operator\r
+
+      - is used for searching NULL values\r
+
+      - NULL is not the same as the IS NULL"
+    languageId: markdown
+  - kind: 2
+    value: "-- returns all employees whose commission_pct has no value.\r
+
+      select * from employees where commission_pct = NULL;"
+    languageId: oracle-sql
+  - kind: 2
+    value: "-- list employees whose commission_pct is NULL, meaning they do not have
+      a commission value assigned\r
+
+      select * from employees where commission_pct IS NULL;"
+    languageId: oracle-sql
+  - kind: 2
+    value: "-- list employees whose commission_pct are not NULL\r
+
+      select * from employees where commission_pct IS NOT NULL;"
+    languageId: oracle-sql

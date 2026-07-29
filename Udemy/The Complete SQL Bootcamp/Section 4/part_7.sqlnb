@@ -1,0 +1,61 @@
+cells:
+  - kind: 1
+    value: "# LIKE Operator\r
+
+      - are used for searching some texts in string values\r
+
+      - is used to perform wildcard searches & retrieves rows matching a certain
+      characte pattern\r
+
+      \  \r
+
+      | Symbol | Character       |
+      Description                                                     |\r
+
+      | ------ | --------------- |
+      --------------------------------------------------------------- |\r
+
+      | %      | Percentage Sign | Matches any number of characters including 0
+      or more characters |\r
+
+      | _      | Underscore      | Matches exactly one character |\r
+
+      \r
+
+      - can also be used without the wildcard characters (%, _). But, it is
+      nonsense because it will be equal to (=) operator and LIKE is slower than
+      (=) operator"
+    languageId: markdown
+  - kind: 2
+    value: "-- List employees whose job id is sales representatives\r
+
+      select * from employees where job_id = 'SA_REP';"
+    languageId: oracle-sql
+  - kind: 2
+    value: "-- list employees whose job id is sales representatives \r
+
+      select * from employees where job_id LIKE 'SA_REP';"
+    languageId: oracle-sql
+  - kind: 2
+    value: "-- list employee whose job_id starts with 'SA' characters\r
+
+      select * from employees where job_id LIKE 'SA%';"
+    languageId: oracle-sql
+  - kind: 2
+    value: "-- list employees whose first_name starts with the letter A\r
+
+      select * from employees where first_name LIKE 'A%';"
+    languageId: oracle-sql
+  - kind: 2
+    value: "select * from employees where first_name LIKE '%A';\r
+
+      select * from employees where first_name LIKE '%a';"
+    languageId: oracle-sql
+  - kind: 2
+    value: select * from employees where first_name LIKE '%a%';
+    languageId: oracle-sql
+  - kind: 2
+    value: "-- list employees whose first_name has an 'r' as its second character\r
+
+      select * from employees where first_name LIKE '_r%';"
+    languageId: oracle-sql
