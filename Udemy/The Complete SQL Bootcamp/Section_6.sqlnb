@@ -1,0 +1,316 @@
+cells:
+  - kind: 1
+    value: "# Using Substitution Variables\r
+
+      ## What is a Substitution Variable?\r
+
+      - can be though as a **user variable**\r
+
+      - are placeholders in an SQL script where you want to substitute some
+      values at runtime\r
+
+      - ampersand (&) character is used before the substitution variable in the
+      query\r
+
+      - If we want to use a substitution variable for a string or a date, we
+      need to make sure that the value is enclosed in single quotes\r
+
+      - can used more than one substitution variable at various places in an SQL
+      statment like:\r
+
+      \  - where condition\r
+
+      \  - order by clause\r
+
+      \  - column expressions\r
+
+      \  - table name\r
+
+      \  - entire SELECT statements"
+    languageId: markdown
+  - kind: 2
+    value: "\r
+
+      select employee_id, first_name, last_name, department_id\r
+
+      from employees\r
+
+      where department_id = 30;"
+    languageId: oracle-sql
+  - kind: 2
+    value: "\r
+
+      select employee_id, first_name, last_name, department_id\r
+
+      from employees\r
+
+      where department_id = &department_no;"
+    languageId: oracle-sql
+  - kind: 2
+    value: "\r
+
+      select employee_id, first_name, last_name, department_id\r
+
+      from employees\r
+
+      where first_name = '&name';"
+    languageId: oracle-sql
+  - kind: 2
+    value: "\r
+
+      select employee_id, first_name, last_name, &column_name\r
+
+      from &table_name\r
+
+      where &condition\r
+
+      order by &order_by_clause;"
+    languageId: oracle-sql
+  - kind: 1
+    value: "## Double Ampersand (&&) and DEFINE & UNDEFINE Commands\r
+
+      - using a double ampersand in front of a substitution variable tells SQL
+      Developer or SQL*Plus to define that variable for the duration of the
+      session\r
+
+      \    -  ```sql\r
+
+      \        select select employee_id, first_name, last_name, salary\r
+
+      \        from employees\r
+
+      \        where salary = &&sal\r
+
+      \        or salary = &sal + 1000;\r
+
+      \    ```\r
+
+      - DEFINE and UNDEFINE commands allow us to explicitly create and delete
+      user variables\r
+
+      - DEFINE command is used to define a new user-variable and design it a
+      value\r
+
+      - DEFINE can also be used to display the value of a specific user variable
+      or to display the values of all user variable\r
+
+      \  - ```sql\r
+
+      \    define variable_name = value'\r
+
+      \    ```"
+    languageId: markdown
+  - kind: 2
+    value: "-- Display employee information using a user-specified column and sort
+      the results \r
+
+      -- by that same column.\r
+
+      select employee_id, first_name, last_name, &&column_name\r
+
+      from employees\r
+
+      order by &column_name;"
+    languageId: oracle-sql
+  - kind: 2
+    value: "-- Display the unique values of a user-specified column and sort them in
+      \r
+
+      -- ascending order.\r
+
+      select &&column_name\r
+
+      from employees\r
+
+      group by &column_name\r
+
+      order by &column_name;"
+    languageId: oracle-sql
+  - kind: 2
+    value: "-- Display all information for the employee whose employee ID is stored
+      in the \r
+
+      -- emp_num substitution variable.\r
+
+      define emp_num = 200;\r
+
+      define column_name = 'first_name';\r
+
+      \r
+
+      select * from EMPLOYEES\r
+
+      where employee_id = &emp_num;"
+    languageId: oracle-sql
+  - kind: 2
+    value: "-- Remove the emp_num substitution variable and prompt the user to enter
+      a new \r
+
+      -- employee ID before executing the query.\r
+
+      define emp_num = 200;\r
+
+      define column_name = 'first_name';\r
+
+      undefine emp_num;\r
+
+      \r
+
+      select * from EMPLOYEES\r
+
+      where employee_id = &emp_num;"
+    languageId: oracle-sql
+  - kind: 2
+    value: "-- Display all currently defined substitution variables and their
+      values.\r
+
+      DEFINE;"
+    languageId: oracle-sql
+  - kind: 2
+    value: "-- Display the current value of the substitution variable column_name.\r
+
+      DEFINE column_name;"
+    languageId: oracle-sql
+  - kind: 2
+    value: "-- Remove the column_name substitution variable from the current SQL
+      session.\r
+
+      UNDEF column_name;"
+    languageId: oracle-sql
+  - kind: 2
+    value: "-- Display the current value of the column_name substitution variable.\r
+
+      DEF column_name;"
+    languageId: oracle-sql
+  - kind: 1
+    value: "## ACCEPT and PROMPT Commands\r
+
+      - Most reliable and robust method for getting input from the user is to
+      explicitly prompt for values using the ACCEPT and PROMPT commands\r
+
+      \  - ```sql\r
+
+      \     ACCEPT emp_id PROMPT 'Please Enter an Employee ID:';\r
+
+      \    ```\r
+
+      - **ACCEPT** command takes input from the user & stores it in a user
+      variable\r
+
+      - **PROMPT** command is used to display a message to the user for
+      supplying a brief explanation of what your script is going to accomplish"
+    languageId: markdown
+  - kind: 2
+    value: "-- Prompt the user for an employee ID, display the employee's ID, name,
+      and \r
+
+      -- salary, then remove the substitution variable.\r
+
+      ACCEPT emp_id PROMPT 'Pleae enter a valid Employee ID:';\r
+
+      SELECT employee_id, first_name, last_name, salary\r
+
+      FROM employees\r
+
+      WHERE employee_id = &emp_id;\r
+
+      \r
+
+      UNDEFINE emp_id;"
+    languageId: oracle-sql
+  - kind: 2
+    value: "-- Prompt the user for a minimum and maximum salary, display employees
+      whose \r
+
+      -- salaries fall within that range, then remove the substitution
+      variables.\r
+
+      ACCEPT min_salary PROMPT 'Please specify the MINIMUM salary:';\r
+
+      ACCEPT max_salary PROMPT 'Please specify the MAXIMUM salary:';\r
+
+      SELECT employee_id, last_name, salary\r
+
+      FROM employees\r
+
+      WHERE salary BETWEEN &min_salary AND &maxs_salary;\r
+
+      \r
+
+      UNDEFINE min_salary;\r
+
+      UNDEF max_salary;"
+    languageId: oracle-sql
+  - kind: 1
+    value: "## SET VERIFY ON/SET VERIFY OFF Commands\r
+
+      - **VERIFY** command displays the status of the veriable before and after
+      the substitution\r
+
+      - VERIFY command can be used in two ways which are:\r
+
+      \  - ```sql\r
+
+      \     SET VERIFY ON; -- turns on verification\r
+
+      \    ```\r
+
+      \  - ```sql\r
+
+      \     SET VERIFY OFF; -- turn off verification\r
+
+      \    ```"
+    languageId: markdown
+  - kind: 2
+    value: "-- Enable substitution variable verification and display the employee's
+      ID, \r
+
+      -- first name, and last name for the entered employee ID.\r
+
+      SET VERIFY ON;\r
+
+      SELECT employee_id, first_name, last_name\r
+
+      FROM EMPLOYEES\r
+
+      WHERE employee_id = &emp_id;"
+    languageId: oracle-sql
+  - kind: 2
+    value: "-- Disable substitution variable verification and display the employee's
+      ID, \r
+
+      -- first name, and last name for the entered employee ID.\r
+
+      SET VERIFY OFF;\r
+
+      SELECT employee_id, first_name, last_name\r
+
+      FROM EMPLOYEES\r
+
+      WHERE employee_id = &emp_id;"
+    languageId: oracle-sql
+  - kind: 2
+    value: "-- Disable verification messages, prompt for an employee ID, display the
+      matching \r
+
+      -- employee, then disable substitution variables so 'R&D' is treated as a
+      literal \r
+
+      -- string.\r
+
+      SET VERIFY OFF;\r
+
+      SELECT employee_id, first_name, last_name\r
+
+      FROM EMPLOYEES\r
+
+      WHERE employee_id = &emp_id;\r
+
+      \r
+
+      SELECT * FROM departments WHERE department_name = 'R&D';\r
+
+      \r
+
+      SET DEFINE OFF;"
+    languageId: oracle-sql
