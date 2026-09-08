@@ -1,1 +1,13 @@
 # Welcome to The Complete SQL Bootcamp!
+- Section 2
+- Section 3
+- Section 4
+- Section 5
+  - ORDER BY clause
+  - ASC and DESC Operators
+- Section 6
+  - What is Substitution Variable?
+  - Double Ampersand (&&) and DEFINE & UNDEFINE Commands
+  - ACCEPT and PROMPT Commands
+  - SET VERIFY ON/SET VERIFY OFF Commands
+- Section 7
