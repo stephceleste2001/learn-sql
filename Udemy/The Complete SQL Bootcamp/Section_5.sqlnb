@@ -1,0 +1,482 @@
+cells:
+  - kind: 1
+    value: "# Section 5\r
+
+      ## ORDER BY Clause\r
+
+      - changes the returning rows' order by any column or alias or the numeric
+      positions of the columns in the SELECT list\r
+
+      - can sort the retrieved rows in ascending (ASC) or descending (DESC)
+      order\r
+
+      - if you don't specify anything for the type of the order, the default
+      order is ascending\r
+
+      - can be used with the given alias in the SELECT statement\r
+
+      - can also be used with the column position in the SELECT list or the
+      column order in the database\r
+
+      - can be used with multiple columns"
+    languageId: markdown
+  - kind: 2
+    value: "-- Retrieves each employee's first name, last name, and salary, \r
+
+      -- then sorts the results alphabetically by first name.\r
+
+      select first_name, last_name, salary \r
+
+      from employees\r
+
+      order by first_name;"
+    languageId: oracle-sql
+  - kind: 2
+    value: "-- Retrieves each employee's first name, last name, and salary, then \r
+
+      -- sorts the results alphabetically by last name.\r
+
+      select first_name, last_name, salary\r
+
+      from employees\r
+
+      order by last_name;"
+    languageId: oracle-sql
+  - kind: 2
+    value: "-- Calculates a new salary for each employee using the formula \r
+
+      -- (10 × (salary ÷ 5) + 3000) − 100, displays it as NEW_SALARY, and \r
+
+      -- sorts the results by the calculated salary in ascending order.\r
+
+      select first_name, last_name, salary, (\r
+
+      \    10*(salary/5) + 3000) - 100 NEW_SALARY\r
+
+      from employees\r
+
+      order by NEW_SALARY;"
+    languageId: oracle-sql
+  - kind: 2
+    value: "-- Calculates a new salary for each employee using the formula \r
+
+      -- (10 × (salary ÷ 5) + 3000) − 100, then sorts the results \r
+
+      -- alphabetically by the first column (FIRST_NAME).\r
+
+      select first_name, last_name, salary, (\r
+
+      \    10*(salary/5) + 3000) - 100 NEW_SALARY\r
+
+      from employees\r
+
+      order by 1;"
+    languageId: oracle-sql
+  - kind: 2
+    value: "-- Retrieves all columns for every employee, then sorts the results \r
+
+      -- alphabetically by first name and, for employees with the same first \r
+
+      -- name, by last name.\r
+
+      select *\r
+
+      from employees\r
+
+      order by first_name, last_name;"
+    languageId: oracle-sql
+  - kind: 2
+    value: "-- Retrieves all columns for every employee, then sorts the results \r
+
+      -- alphabetically by first name, followed by job ID, and finally by \r
+
+      -- salary in ascending order.\r
+
+      select *\r
+
+      from employees\r
+
+      order by first_name, job_id, salary;"
+    languageId: oracle-sql
+  - kind: 1
+    value: "## ASC and DESC Operators\r
+
+      - queries can be ordered by columns in ascending or descending order
+      individually\r
+
+      - aliases and numeric positions can be used with the ASC and DESC
+      operators\r
+
+      - NULL values are displayed last in ascending order"
+    languageId: markdown
+  - kind: 2
+    value: "-- Retrieves each employee's ID, first name, last name, and salary,\r
+
+      -- then sorts the results in ascending (A–Z) order by first name.\r
+
+      select employee_id, first_name, last_name, SALARY\r
+
+      from employees\r
+
+      order by first_name asc;"
+    languageId: oracle-sql
+  - kind: 2
+    value: "-- Retrieves each employee's ID, first name, last name, and salary,\r
+
+      -- then sorts the results in descending (Z–A) order by first name.\r
+
+      select employee_id, first_name, last_name, SALARY\r
+
+      from employees\r
+
+      order by first_name desc;"
+    languageId: oracle-sql
+  - kind: 2
+    value: "-- Retrieves each employee's ID, first name, last name, and salary,\r
+
+      -- then sorts the results by first name in descending (Z–A) order and,\r
+
+      -- for employees with the same first name, by last name in ascending \r
+
+      -- (A–Z) order.\r
+
+      select employee_id, first_name, last_name, SALARY\r
+
+      from employees\r
+
+      order by first_name desc, last_name;"
+    languageId: oracle-sql
+  - kind: 2
+    value: "-- Retrieves each employee's ID, first name, last name, and salary,\r
+
+      -- then sorts the results by first name in descending (Z–A) order and,\r
+
+      -- for employees with the same first name, by last name in descending \r
+
+      -- (Z–A) order.\r
+
+      select employee_id, first_name, last_name, SALARY\r
+
+      from employees\r
+
+      order by first_name desc, last_name desc;"
+    languageId: oracle-sql
+  - kind: 2
+    value: "-- Retrieves each employee's ID, first name, last name, and salary,\r
+
+      -- then sorts the results by first name in descending (Z–A) order and,\r
+
+      -- for employees with the same first name, by salary in descending \r
+
+      -- order (highest to lowest).\r
+
+      select employee_id, first_name, last_name, SALARY\r
+
+      from employees\r
+
+      order by first_name desc, salary desc;"
+    languageId: oracle-sql
+  - kind: 2
+    value: "-- Retrieves each employee's ID, first name, last name, and salary \r
+
+      -- (aliased as S),then sorts the results by the second selected column \r
+
+      -- (FIRST_NAME) in descending order (Z–A) and, for employees with the \r
+
+      -- same first name, by salary (S) in descending order \r
+
+      -- (highest to lowest).\r
+
+      select employee_id, first_name, last_name, salary s\r
+
+      from employees\r
+
+      order by 2 desc, s desc;"
+    languageId: oracle-sql
+  - kind: 2
+    value: "-- Retrieves each employee's ID, salary, and commission percentage,\r
+
+      -- then sorts the results in ascending order by commission percentage.\r
+
+      select employee_id, salary, commission_pct\r
+
+      from employees\r
+
+      order by commission_pct;"
+    languageId: oracle-sql
+  - kind: 1
+    value: "## NULLS FIRST and NULLS LAST Operators\r
+
+      - are used for changing the order of the NULL values"
+    languageId: markdown
+  - kind: 2
+    value: "-- Retrieves each employee's first name, salary, and commission \r
+
+      -- percentage, then sorts the results by commission percentage in \r
+
+      -- ascending order, placing rows with NULL commission values at the \r
+
+      -- beginning.\r
+
+      select first_name, salary, commission_pct\r
+
+      from employees\r
+
+      order by commission_pct NULLS FIRST;"
+    languageId: oracle-sql
+  - kind: 2
+    value: "-- Retrieves each employee's first name, salary, and commission \r
+
+      -- percentage, then sorts the results by commission percentage in \r
+
+      -- ascending order, placing rows with NULL commission values before \r
+
+      -- all non-NULL values.\r
+
+      select first_name, salary, commission_pct\r
+
+      from employees\r
+
+      order by commission_pct asc NULLS FIRST;"
+    languageId: oracle-sql
+  - kind: 2
+    value: "-- Retrieves each employee's first name, salary, and commission \r
+
+      -- percentage, then sorts the results by commission percentage in \r
+
+      -- ascending order, placing rows with NULL commission values at the \r
+
+      -- end of the results.\r
+
+      select first_name, salary, commission_pct\r
+
+      from employees\r
+
+      order by commission_pct NULLS LAST;"
+    languageId: oracle-sql
+  - kind: 1
+    value: "## ROWNUM and ROWID\r
+
+      - ROWID\r
+
+      \  - a unique identifier that contains the physical address of a row \r
+
+      \  - Oracle automatically generates a unique ROWID at the same time of a
+      row\r
+
+      \  - is the fastest war to access a single row\r
+
+      \  - is permanents\r
+
+      \  - doesn't change\r
+
+      - ROWNUM\r
+
+      \  - is nothing but consecutive logical sequence number given to the rows
+      fetched from the table\r
+
+      \  - to limit the returning rows in a table, you can use the ROWNUM psuedo
+      column\r
+
+      \  - is temporary\r
+
+      \  - if you change the query, the rownum number will refer to another row"
+    languageId: markdown
+  - kind: 2
+    value: "-- Retrieves each employee's ID, first name, last name, salary,\r
+
+      -- the ROWID (unique physical row address), and the ROWNUM\r
+
+      -- (sequential row number assigned to the query results).\r
+
+      select employee_id, first_name, last_name, salary, rowid, rownum\r
+
+      from employees;"
+    languageId: oracle-sql
+  - kind: 2
+    value: "-- Retrieves the employee ID, first name, last name, salary,\r
+
+      -- ROWID (unique physical row address), and ROWNUM (sequential row \r
+
+      -- number) for employees who belong to department 60.\r
+
+      select employee_id, first_name, last_name, salary, rowid, rownum\r
+
+      from employees\r
+
+      where department_id = 60;"
+    languageId: oracle-sql
+  - kind: 2
+    value: "-- Retrieves the employee ID, first name, last name, salary,\r
+
+      -- ROWID (unique physical row address), and ROWNUM (sequential row \r
+
+      -- number) for employees who belong to department 80.\r
+
+      select employee_id, first_name, last_name, salary, rowid, rownum\r
+
+      from employees\r
+
+      where department_id = 80;"
+    languageId: oracle-sql
+  - kind: 2
+    value: "-- Retrieves the employee ID, first name, last name, salary,\r
+
+      -- ROWID (unique physical row address), and ROWNUM (sequential row \r
+
+      -- number) for up to the first 10 employees in department 80.\r
+
+      select employee_id, first_name, last_name, salary, rowid, rownum\r
+
+      from employees\r
+
+      where department_id = 80\r
+
+      AND rownum <= 10;"
+    languageId: oracle-sql
+  - kind: 2
+    value: "-- Retrieves the employee ID, first name, last name, salary,\r
+
+      -- ROWID (unique physical row address), and ROWNUM (sequential row \r
+
+      -- number) for the first 5 employees found in department 80, then \r
+
+      -- sorts those results by salary in descending order (highest to
+      lowest).\r
+
+      select employee_id, first_name, last_name, salary, rowid, rownum\r
+
+      from employees\r
+
+      where department_id = 80\r
+
+      and rownum <= 5\r
+
+      order by salary desc;"
+    languageId: oracle-sql
+  - kind: 2
+    value: "-- Retrieves the top 5 highest-paid employees in department 80 by
+      first\r
+
+      -- sorting employees by salary in descending order in a subquery, then\r
+
+      -- assigning ROWNUM and returning only the first 5 rows. The query also\r
+
+      -- displays each employee's ROWID and ROWNUM.\r
+
+      select employee_id, first_name, last_name, salary, rowid, rownum from\r
+
+      (select employee_id, first_name, last_name, salary, rowid\r
+
+      \    from employees\r
+
+      \    where department_id = 80\r
+
+      \    order by salary desc)\r
+
+      where rownum <= 5;"
+    languageId: oracle-sql
+  - kind: 2
+    value: "-- Retrieves the employee ID, first name, last name, salary, ROWID,
+      and\r
+
+      -- ROWNUM for the employee whose ROWID matches 'AAARy1AAEAAAIwOAAv'.\r
+
+      -- The subquery first filters employees in department 80 and sorts them\r
+
+      -- by salary in descending order before the outer query searches for the\r
+
+      -- specified ROWID.\r
+
+      select employee_id, first_name, last_name, salary, rowid, rownum from\r
+
+      (select employee_id, first_name, last_name, salary, rowid\r
+
+      \    from employees\r
+
+      \    where department_id = 80\r
+
+      \    order by salary desc)\r
+
+      where rowid = 'AAARy1AAEAAAIwOAAv';"
+    languageId: oracle-sql
+  - kind: 1
+    value: "## FETCH Clause\r
+
+      - is used in conjunction with the SELECT & ORDER BY clauses to limit rows
+      and retrieve a portion of the returning rows\r
+
+      - OFFSET = specifies the number of rows to skip before the row limiting
+      starts\r
+
+      - ROW|ROWS = both of them can be used based on the returning rows in order
+      to increase the semantic clarity\r
+
+      - FETCH = specifies the number of rows or percentage of rows to return\r
+
+      - FIRST | NEXT = you can use any of them based on the situation\r
+
+      - row_count|percent PERCENT = the row_count to specify the number of rows
+      to return, the PERCENT specifies the percentage of the totoal number of
+      selected rows to return\r
+
+      - ONLY | WITH TIES\r
+
+      \  - ONLY is used to return exactly the specified number of rows or
+      percentage of rows\r
+
+      \  - WITH TIES returns extra rows with the same values as the last row
+      fetched\r
+
+      \  - if you specify WITH TIES, then you must specify the order_by_clause\r
+
+      \  - if you don't specify the ORDER BY clause, then no additional rows
+      will be returned\r
+
+      \r
+
+      **Important!**\r
+
+      While using the WITH TIES option, if you don't specify the ORDER BY
+      clause, then, no additional rows will be returned."
+    languageId: markdown
+  - kind: 2
+    value: "\r
+
+      select first_name, last_name, salary\r
+
+      from employees\r
+
+      order by salary desc\r
+
+      offset 1 row fetch first 10 rows only;"
+    languageId: oracle-sql
+  - kind: 2
+    value: "\r
+
+      select first_name, last_name, salary\r
+
+      from employees\r
+
+      order by salary desc\r
+
+      offset 1 row fetch first 10 rows with ties;"
+    languageId: oracle-sql
+  - kind: 2
+    value: "\r
+
+      select first_name, last_name, salary\r
+
+      from employees\r
+
+      offset 1 row fetch next 10 rows with ties;"
+    languageId: oracle-sql
+  - kind: 2
+    value: "\r
+
+      select first_name, last_name, salary\r
+
+      from employees\r
+
+      offset null row fetch next 10 rows with ties;"
+    languageId: oracle-sql

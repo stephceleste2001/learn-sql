@@ -1,0 +1,206 @@
+cells:
+  - kind: 1
+    value: "# Section 7: Single-Row Functions\r
+
+      ## Single Row Functions\r
+
+      ### What is a Function?\r
+
+      - are created for manipulating the data and returning a value\r
+
+      - must be created before calling them. Otherwise, you will have the
+      following error:\r
+
+      \  - 'Function has not been defined yet!'\r
+
+      - are formerly created codes that reside in the database. can be called
+      easily by typing only their names and parameters\r
+
+      - is a bunch of code created for reuse\r
+
+      - two types of functions:\r
+
+      \  1. single-row\r
+
+      \  2. multiple-row\r
+
+      \r
+
+      ![types of functions](types_of_functions.png)\r
+
+      ### Single-Row Functions\r
+
+      - operate on single rows and return only one result per row\r
+
+      - accept one or more arguments and return one value\r
+
+      - return value for each row returned\r
+
+      - can be used alone or nested\r
+
+      \  - function1(function2(function3(x)))\r
+
+      - column or an expression can be used as arguments\r
+
+      - returning data types can be different than the input data types\r
+
+      - can be used in SELECT, WHERE, or ORDER BY clauses\r
+
+      \  - ```SQL \r
+
+      \    SELECT function_name[(arg1, arg2, ...)] FROM dual;\r
+
+      \    ```\r
+
+      - are categorized by the data types of their input parameters\r
+
+      - **character functions**-accept character values as input, and return
+      character or numeric values\r
+
+      - **number fucntions**-accept numeric values as input & return numeric
+      values as output\r
+
+      - **date functions**-operate on values of the DATE data type\r
+
+      - **conversion functions**-used to convert one data type to another\r
+
+      \  - ![conversion function](conversion_function.png)\r
+
+      - **general functions**-take in any data type. But, they are mainly used
+      to handle the NULL values\r
+
+      ### Character Functions\r
+
+      - take in character data as input & return character or numeric data as
+      output\r
+
+      - two different types of character functions:\r
+
+      \  1. **Case conversion functions:** convert characters to upper case or
+      lower case\r
+
+      \     - UPPER function\r
+
+      \     - LOWER function\r
+
+      \     - INITCAP function\r
+
+      \  2. **Character manipulation functions:**\r
+
+      \     - SUBSTR function\r
+
+      \     - LENGTH function\r
+
+      \     - CONCAT function\r
+
+      \     - INSTR function\r
+
+      \     - TRIM function\r
+
+      \     - REPLACE function\r
+
+      \     - LPAD/RPAD function"
+    languageId: markdown
+  - kind: 2
+    value: "\r
+
+      SELECT first_name, SUBSTR(first_name, 3, 6), SUBSTR(first_name, 3),\r
+
+      \    last_name, LENGTH(last_name)\r
+
+      FROM employees;"
+    languageId: oracle-sql
+  - kind: 2
+    value: "\r
+
+      SELECT CONCAT(first_name, last_name)\r
+
+      FROM employees;"
+    languageId: oracle-sql
+  - kind: 2
+    value: "\r
+
+      SELECT CONCAT(CONCAT(first_name, last_name), employee_id)\r
+
+      FROM employees;"
+    languageId: oracle-sql
+  - kind: 2
+    value: "\r
+
+      SELECT first_name || last_name || employee_id\r
+
+      FROM employees;"
+    languageId: oracle-sql
+  - kind: 2
+    value: "\r
+
+      SELECT INSTR('I am learning how to use functions in Oracle', 'o', 17, 3)\r
+
+      FROM dual;"
+    languageId: oracle-sql
+  - kind: 2
+    value: "\r
+
+      SELECT INSTR('I am learning how to use functions in Oracle', 'o', 1, 3)\r
+
+      FROM dual;"
+    languageId: oracle-sql
+  - kind: 2
+    value: "\r
+
+      SELECT INSTR('I am learning how to use functions in Oracle', 'o', -1, 3)\r
+
+      FROM duals;"
+    languageId: oracle-sql
+  - kind: 2
+    value: "\r
+
+      SELECT INSTR('I am learning how to use funtions in Oracle', 'o', -1, 1)\r
+
+      FROM dual;"
+    languageId: oracle-sql
+  - kind: 2
+    value: "\r
+
+      SELECT INSTR('I am learning how to use functions in Oracle', 'in', -1,
+      1)\r
+
+      FROM dual;"
+    languageId: oracle-sql
+  - kind: 2
+    value: "\r
+
+      SELECT INSTR('I am learning how to use functions in Oracle', 'in', 1, 1)\r
+
+      FROM dual;"
+    languageId: oracle-sql
+  - kind: 2
+    value: "\r
+
+      SELECT TRIM('    My name is Adam   ') trm from dual;"
+    languageId: oracle-sql
+  - kind: 2
+    value: "\r
+
+      SELECT TRIM (''FROM'    My Name is Adam  ') trm from dual;"
+    languageId: oracle-sql
+  - kind: 2
+    value: "\r
+
+      SELECT TRIM(BOTH''FROM'     My Name is Adam   ') trm from dual;"
+    languageId: oracle-sql
+  - kind: 2
+    value: "\r
+
+      SELECT TRIM(LEADING''FROM'    My Name is Adam  ') trm from dual;"
+    languageId: oracle-sql
+  - kind: 2
+    value: "\r
+
+      SELECT TRIM(TRAILING ''FROM'    My Name is Adam   ') trm\r
+
+      from dual;"
+    languageId: oracle-sql
+  - kind: 2
+    value: "\r\n"
+    languageId: oracle-sql
